@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestLogin {
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
         // Get appium driver
         AppiumDriver<MobileElement> driver = DriverFactory.getDriver(Platforms.ANDROID);
 

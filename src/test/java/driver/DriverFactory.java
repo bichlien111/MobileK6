@@ -11,9 +11,11 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class DriverFactory implements MobileCapabilityTypeEx {
-    public static AppiumDriver<MobileElement> getDriver(Platforms platforms) throws IllegalAccessException {
-        if (platforms == null) {
-            throw new IllegalAccessException("Platform can't be null, you can provide one of theses: "
+
+    public static AppiumDriver<MobileElement> getDriver(Platforms platform) {
+
+        if (platform == null) {
+            throw new IllegalArgumentException("Platform can't be null, you can provide one of these: "
                     + Arrays.toString(Platforms.values()));
         }
 
@@ -22,26 +24,24 @@ public class DriverFactory implements MobileCapabilityTypeEx {
 
         try {
             // Desired Capabilities
-            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-            desiredCapabilities.setCapability(PLATFORM_NAME, "Android");
-            desiredCapabilities.setCapability(AUTOMATION_NAME, "uiautomator2");
-            desiredCapabilities.setCapability(UDID, "R58RA2V756Z");
-            desiredCapabilities.setCapability(APP_PACKAGE, "com.wdiodemoapp");
-            desiredCapabilities.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
-//          desiredCapabilities.setCapability(APP_PACKAGE, "vn.tiki.app.tikiandroid");
-//          desiredCapabilities.setCapability(APP_ACTIVITY, "vn.tiki.android.shopping.homeV3.HomeActivity");
+            DesiredCapabilities desiredCaps = new DesiredCapabilities();
+            desiredCaps.setCapability(PLATFORM_NAME, "Android");
+            desiredCaps.setCapability(AUTOMATION_NAME, "uiautomator2");
+            desiredCaps.setCapability(UDID, "R58RA2V756Z");
+            desiredCaps.setCapability(APP_PACKAGE, "com.wdiodemoapp");
+            desiredCaps.setCapability(APP_ACTIVITY, "com.wdiodemoapp.MainActivity");
 
             // Init appium session
             URL appiumServer = new URL("http://localhost:4723/wd/hub");
 
-            switch (platforms) {
+            switch (platform) {
                 case ANDROID:
-                    appiumDriver = new AndroidDriver<MobileElement>(appiumServer, desiredCapabilities);
+                    appiumDriver = new AndroidDriver<MobileElement>(appiumServer, desiredCaps);
                     break;
                 case IOS:
-                    appiumDriver = new IOSDriver<MobileElement>(appiumServer, desiredCapabilities);
-                    break;
+                    appiumDriver = new IOSDriver<MobileElement>(appiumServer, desiredCaps);
             }
+
         } catch (Exception e) {
             exception = e;
         }
@@ -50,8 +50,8 @@ public class DriverFactory implements MobileCapabilityTypeEx {
             throw new RuntimeException(exception.getMessage());
         }
 
-        // Add Implicit wait
-        appiumDriver.manage().timeouts().implicitlyWait(3L, TimeUnit.SECONDS);
+        // Add IMPLICIT WAIT HERE
+        appiumDriver.manage().timeouts().implicitlyWait(5L, TimeUnit.SECONDS);
         return appiumDriver;
     }
 }
