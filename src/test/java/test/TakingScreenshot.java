@@ -40,7 +40,7 @@ public class TakingScreenshot {
             e.printStackTrace();
 
         } finally {
-
+            appiumDriver.quit();
         }
     }
 }
