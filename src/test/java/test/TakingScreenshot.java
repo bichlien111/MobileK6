@@ -1,7 +1,9 @@
 package test;
 
-import appiumDriver.DriverFactory;
-import appiumDriver.Platforms;
+//import appiumDriver.DriverFactory;
+//import appiumDriver.Platforms;
+import driver.DriverFactory;
+import driver.Platforms;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;

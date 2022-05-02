@@ -3,10 +3,9 @@ package test;
 import driver.DriverFactory;
 import driver.Platforms;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import modules.components.BottomNavComponent;
-import modules.pages.LoginScreen;
+import modules.pages.LoginScreen_01;
 
 public class LoginScreen_POM_03 {
 
@@ -16,14 +15,14 @@ public class LoginScreen_POM_03 {
 
         try {
             // Find and click on nav Login button
-            LoginScreen loginScreen = new LoginScreen(driver);
-            BottomNavComponent bottomNavComponent = loginScreen.bottomNavComponent();
+            LoginScreen_01 loginScreen01 = new LoginScreen_01(driver);
+            BottomNavComponent bottomNavComponent = loginScreen01.bottomNavComponent();
             bottomNavComponent.clickOnLoginIcon();
 
             // Fill the form
-            loginScreen.inputEmail("lien@gmail.com");
-            loginScreen.inputPassword("12345678");
-            loginScreen.clickLoginBtn();
+            loginScreen01.inputEmail("lien@gmail.com");
+            loginScreen01.inputPassword("12345678");
+            loginScreen01.clickLoginBtn();
 
         } catch (Exception e) {
             e.printStackTrace();

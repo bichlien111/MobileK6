@@ -5,7 +5,7 @@ import driver.Platforms;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import modules.pages.LoginScreen;
+import modules.pages.LoginScreen_01;
 
 public class LoginScreen_POM_02 {
 
@@ -19,10 +19,10 @@ public class LoginScreen_POM_02 {
             navLoginBtnElement.click();
 
             // Fill the form
-            LoginScreen loginScreen = new LoginScreen(driver);
-            loginScreen.inputEmail("lien@gmail.com");
-            loginScreen.inputPassword("12345678");
-            loginScreen.clickLoginBtn();
+            LoginScreen_01 loginScreen01 = new LoginScreen_01(driver);
+            loginScreen01.inputEmail("lien@gmail.com");
+            loginScreen01.inputPassword("12345678");
+            loginScreen01.clickLoginBtn();
 
         } catch (Exception e) {
             e.printStackTrace();
