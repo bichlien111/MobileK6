@@ -51,7 +51,7 @@ public class LoginFlow extends BaseFlow {
         LoginFormComponent loginFormComp = loginScreen.loginFormComponent();
 
         if (isEmailValid && isPasswordValid) {
-            verifyCorrectLoginCreds(loginFormComp);
+            verifyCorrectLoginCreds(loginScreen);
         }
 
         if (!isEmailValid) {
@@ -67,7 +67,7 @@ public class LoginFlow extends BaseFlow {
 
     private void verifyIncorrectEmailStr(LoginFormComponent loginFormComp) {
         String actualInvalidEmail = loginFormComp.getInvalidEmail();
-        String expectedInvalidEmail = "Please enter a valid email address.";
+        String expectedInvalidEmail = "Please enter a valid email address";
 
         // Verification
 //        System.out.println("actualInvalidEmail: " + actualInvalidEmail);
@@ -84,7 +84,7 @@ public class LoginFlow extends BaseFlow {
 
     private void verifyIncorrectPasswordStr(LoginFormComponent loginFormComp) {
         String actualInvalidPassword = loginFormComp.getInvalidPassword();
-        String expectedInvalidPassword = "Please enter at least 8 characters.";
+        String expectedInvalidPassword = "Please enter at least 8 characters";
 
         // Verification
 //        System.out.println("actualInvalidPassword: " + actualInvalidPassword);
@@ -99,13 +99,15 @@ public class LoginFlow extends BaseFlow {
         softAssert.assertAll();
     }
 
-    private void verifyCorrectLoginCreds(LoginFormComponent loginFormComp) {
+    private void verifyCorrectLoginCreds(LoginScreen loginScreen) {
         // TODO: Homework
+        LoginFormComponent loginFormComp = new LoginFormComponent(appiumDriver);
         String actualCorrectLogin = loginFormComp.getCorrectLogin();
         String expectedCorrectLogin = "Success";
 
         // Verification
         System.out.println("actualCorrectLogin: " + actualCorrectLogin);
         System.out.println("expectedCorrectLogin: " + expectedCorrectLogin);
+        loginScreen.loginDialogComponent().clickOKBtn();
     }
 }
