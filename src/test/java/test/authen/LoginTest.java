@@ -16,9 +16,10 @@ public class LoginTest extends BaseTest {
     @Test(dataProvider = "loginCredData")
     public void testLogin(LoginCredData loginCredData) {
 
+        System.out.println("--> Session ID: " + appiumDriver.getSessionId());
         String email = loginCredData.getEmail();
         String password = loginCredData.getPassword();
-        LoginFlow loginFlow = new LoginFlow(getAppiumDriver(), email, password);
+        LoginFlow loginFlow = new LoginFlow(appiumDriver, email, password);
         loginFlow.gotoLoginScreen();
         loginFlow.login();
         loginFlow.verifyLogin();

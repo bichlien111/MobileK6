@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
 
-    protected AppiumDriver<MobileElement> appiumDriver;
+    protected static AppiumDriver<MobileElement> appiumDriver;
 
     @BeforeTest
     public void initAppiumSession() {

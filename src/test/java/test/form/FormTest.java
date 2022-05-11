@@ -11,7 +11,9 @@ public class FormTest extends BaseTest {
 
     @Test
     public void testFormInput() {
-        FormFlow formFlow = new FormFlow(getAppiumDriver());
+
+        System.out.println("--> Session ID: " + appiumDriver.getSessionId());
+        FormFlow formFlow = new FormFlow(appiumDriver);
         formFlow.gotoFormScreen();
         formFlow.fillTheForm();
         formFlow.verifyFormDisplay();
